@@ -1,7 +1,10 @@
 package com.kh.myapp.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -9,13 +12,19 @@ import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.myapp.login.LoginSvc;
 import com.kh.myapp.member.dto.MemberDTO;
@@ -147,6 +156,45 @@ public class MemberController {
 		logger.info("삭제처리 결과:" + success);
 		return "forward:/";
 	}
+	
+	//이미지 업로드
+	//@RequestMapping(value="/upload",method=RequestMethod.POST)
+	@PostMapping("/upload")
+	@ResponseBody //view를 전달하지않고 데이터만 보겠다는 restfull서비스를 위함.
+	public ResponseEntity<String> doUpload(@RequestParam("file") MultipartFile file) {
+		
+		ResponseEntity<String> resCode = null;
+		String randomFileName = null;	// 난수 파일명
+		String originFileName = null;	// 초기 파일명
+		String fileLocation = "C:\\KTH\\git\\repository\\springedu\\src\\main\\webapp\\resources\\upload";
+		
+		if(!file.isEmpty()) {
+			
+			randomFileName = UUID.randomUUID().toString();
+			originFileName = file.getOriginalFilename();
+			
+			// 초기파일명 확장자 추출
+			int pos = originFileName.lastIndexOf(".");
+			String ext = originFileName.substring(pos+1);
+			randomFileName = randomFileName + "." + ext;
+			
+			File tmpFile = new File(fileLocation, randomFileName);
+			try {
+				// 파일 시스템에 파일쓰기
+				file.transferTo(tmpFile);
+				resCode = new ResponseEntity<String>("success",HttpStatus.OK);
+			} catch (IOException e) {
+				e.printStackTrace();
+				resCode = new ResponseEntity<String>("fail",HttpStatus.BAD_REQUEST);
+				return resCode;
+			}
+		}
+		
+		return resCode;
+	}
+	
+	
+	
 }
 
 
