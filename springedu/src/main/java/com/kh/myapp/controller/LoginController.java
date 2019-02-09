@@ -33,7 +33,7 @@ public class LoginController {
 	
 	//로그인
 	@RequestMapping(value="/loginOk")//,method=RequestMethod.POST)
-	public String login(@Valid @ModelAttribute("login") LoginCmd login, BindingResult result, HttpSession session) {
+	public String login(@Valid @ModelAttribute("login") LoginCmd login, BindingResult result, Model model, HttpSession session) {
 
 		logger.info("String login 호출됨!");
 				
@@ -44,7 +44,30 @@ public class LoginController {
 			return "/login/loginForm";
 		}
 		
-		//1)회원 유무체크
+		//1) 회원존재유무체크
+		if(loginSvc.isExist(login.getId())) {
+		
+		//1-1) 정상회원 체크
+			if (loginSvc.isMember(login.getId(), login.getPw())) {
+				//정상회원
+				mdto = loginSvc.login(login.getId(), login.getPw());
+				session.setAttribute("user", mdto);
+				logger.info("로그인 처리됨:" + login.getId());
+				return "redirect:/";
+			}else {
+				//비밀번호오류
+				model.addAttribute("errmsg", "아이디 또는 비밀번호가 일치하지 않습니다.");
+				logger.info("아이디/비밀번호 오류");
+				return "forward:/login/loginForm";
+			}
+		}else {
+			//회원정보가 없습니다.
+			model.addAttribute("errmsg", "일치하는 회원정보가 없습니다.");
+			logger.info("회원정보가 없습니다.");
+			return "forward:/login/loginForm";
+		}
+		
+		/*//1)회원 유무체크
 		if (loginSvc.isMember(login.getId(), login.getPw())) {
 		//2)로그인 처리
 			mdto = loginSvc.login(login.getId(), login.getPw());
@@ -53,7 +76,7 @@ public class LoginController {
 		}else {
 			return "forward:/login/loginForm";
 		}
-		return "redirect:/";
+		return "redirect:/";*/
 	}
 	
 	//로그아웃

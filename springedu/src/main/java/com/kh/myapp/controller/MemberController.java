@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.kh.myapp.login.LoginCmd;
 import com.kh.myapp.login.LoginSvc;
 import com.kh.myapp.member.dto.MemberDTO;
 import com.kh.myapp.member.service.MemberSvc;
@@ -148,13 +149,18 @@ public class MemberController {
 	
 	//회원삭제처리
 	@RequestMapping("/memberDelete/{id:.+}")
-	public String memberDelete(@PathVariable String id) {
+	public String memberDelete(@PathVariable String id, HttpSession session, Model model) {
 		logger.info("/memberDelete/{id:.+}");
 		boolean success = false;
 		
+		logger.info(id);
 		success = memberSvc.adminDelete(id);
 		logger.info("삭제처리 결과:" + success);
-		return "forward:/";
+		if(success) {
+			session.removeAttribute("user");
+		}
+		model.addAttribute("login", new LoginCmd());
+		return "/member/memberDelete";
 	}
 	
 	//이미지 업로드

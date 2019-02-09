@@ -5,18 +5,19 @@
 <jsp:include page="/main_header.jsp" flush="false" />
 
 <style>
-.errmsg, .pwErr {
-	color: #f00;
-}
+		.errmsg, .pwErr {
+			color: #f00;
+		}
+		@media (min-width: 768px) {
+	    .bd-placeholder-img-lg {
+	      font-size: 3.5rem;
+	  	}
+	  	.find {
+    		font-size: 13px;
+    	}
+	  }
+	  
 </style>
-
-<link rel="stylesheet"
-	href="/webjars/bootstrap/4.2.1/css/bootstrap.min.css" />
-
-<script src="/webjars/jquery/3.3.1/dist/jquery.min.js"></script>
-<script src="/webjars/popper.js/1.14.6/dist/umd/popper.min.js"></script>
-<script src="/webjars/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-
 
 <script>
 	$(function() {
@@ -50,10 +51,10 @@
 			location.href = "/";
 		});
 		
-	/* 	$("#delBtn").on("click",function(){
+		$("#delete").on("click",function(){
 			console.log("del");
-			$(location).attr("href",$(this).attr("data-memurl"));
-		}); */
+			location.href = "/member/memberDelete/${sessionScope.user.id }";
+		});
 
 	});
 </script>
@@ -73,7 +74,8 @@
 				</div>
 				<div class="form-group row">
 					<label for="pwchk" class="col-sm-2 col-form-label col-form-label-sm">비밀번호확인</label>
-					<input type="password" id="pwchk" class="col-sm-3 form-control form-control-sm " placeholder="비밀번호를 입력하세요!" /> 
+					<input type="password" id="pwchk" class="col-sm-3 form-control form-control-sm " 
+					placeholder="비밀번호를 입력하세요!" required/> 
 						<span class="col-sm-2 pwErr"></span>
 					<form:errors path="pw" cssClass="col-sm-2 errmsg"></form:errors>
 				</div>
@@ -128,7 +130,7 @@
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-								<button type="button" class="btn btn-primary">탈퇴</button>
+								<button type="button" class="btn btn-primary" id="delete">탈퇴</button>
 							</div>
 						</div>
 					</div>

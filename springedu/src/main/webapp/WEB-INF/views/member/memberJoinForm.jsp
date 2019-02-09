@@ -64,27 +64,27 @@
   
   <div class="form-group row">
     <form:label path="id" class="col-sm-2 col-form-label col-form-label-sm">아이디</form:label>
-    <form:input type="text" path="id" class="col-sm-3 form-control form-control-sm is-valid" placeholder="아이디를 입력하세요!" required="required"   />
+    <form:input type="text" path="id" class="col-sm-3 form-control form-control-sm" placeholder="아이디를 입력하세요!" required="required"   />
  		<form:errors path="id" cssClass="col-sm-2 errmsg"></form:errors>
   </div>
   <div class="form-group row ">
     <form:label path="pw" class="col-sm-2 col-form-label col-form-label-sm">비밀번호</form:label>
-    <form:input type="password" path="pw" class="col-sm-3 form-control form-control-sm is-valid" placeholder="비밀번호를 입력하세요!" required="required"/>
+    <form:input type="password" path="pw" class="col-sm-3 form-control form-control-sm" placeholder="비밀번호를 입력하세요!" required="required"/>
 		<form:errors path="pw" cssClass="col-sm-2 errmsg"></form:errors>
   </div>  
   <div class="form-group row">
     <label for="pwchk" class="col-sm-2 col-form-label col-form-label-sm">비밀번호확인</label>
-    <input type="password" id="pwchk" class="col-sm-3 form-control form-control-sm is-valid" placeholder="비밀번호를 입력하세요!" required/>
+    <input type="password" id="pwchk" class="col-sm-3 form-control form-control-sm" placeholder="비밀번호를 입력하세요!" required/>
 		<span class="col-sm-2 pwErr"></span>
   </div> 
   <div class="form-group row">
     <form:label path="tel" class="col-sm-2 col-form-label col-form-label-sm">전화번호</form:label>
-	  <form:input type="tel" path="tel" class="col-sm-3 form-control form-control-sm is-valid" placeholder="전화번호를 입력하세요 ex)010-1234-5678" required="true"/>
+	  <form:input type="tel" path="tel" class="col-sm-3 form-control form-control-sm " placeholder="전화번호를 입력하세요 ex)010-1234-5678" required="true"/>
 		<form:errors path="tel" cssClass="col-sm-2 errmsg"></form:errors>
   </div>
   <div class="form-group row">
     <form:label path="nickName" class="col-sm-2 col-form-label col-form-label-sm">닉네임</form:label>    
-    <form:input type="text" path="nickName" class="col-sm-3 form-control form-control-sm is-valid" placeholder="별칭을 입력하세요!" required="true"/>
+    <form:input type="text" path="nickName" class="col-sm-3 form-control form-control-sm" placeholder="별칭을 입력하세요!" required="true"/>
 		<form:errors path="nickName" cssClass="col-sm-2 errmsg"></form:errors>
   </div>
   <div class="form-group row">
@@ -94,7 +94,7 @@
   <div class="form-group row">
 
        <form:label path="region" class="col-sm-2 col-form-label col-form-label-sm">지역</form:label>
-       <form:select path="region" class="col-sm-3 form-control form-control-sm is-valid">
+       <form:select path="region" class="col-sm-3 form-control form-control-sm">
        <option value="" >--지역선택--</option>       	
        <form:options path="region" items="${rCodes }" itemLabel="label" itemValue="code" />
        </form:select>	
@@ -104,7 +104,7 @@
   </div>  
   <div class="form-group row">
     <form:label path="birth" class="col-sm-2 col-form-label col-form-label-sm">생년월일</form:label>
-    <form:input type="date" path="birth" class="col-sm-3 form-control form-control-sm is-valid" placeholder="생년월일을 입력하세요!" required="true"/>
+    <form:input type="date" path="birth" class="col-sm-3 form-control form-control-sm" placeholder="생년월일을 입력하세요!" required="true"/>
 		<form:errors path="birth" cssClass=" col-sm-2 errmsg"></form:errors>
   </div>  	
   <div class="form-group row" >
@@ -112,7 +112,6 @@
 			<button class="btn btn-primary btn-sm" type="submit" id="joinBtn">가입</button>
 			<button class="btn btn-primary btn-sm" type="submit" id="joinClearBtn">초기화</button>
 			<button class="btn btn-primary btn-sm" type="submit" id="joinCancelBtn">취소</button>
-			<button class="btn btn-primary btn-sm" type="submit" id="listBtn">회원목록</button>
 		<div>
 	</div>
 	</div></div>  

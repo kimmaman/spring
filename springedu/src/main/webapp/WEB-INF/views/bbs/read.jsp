@@ -115,8 +115,8 @@
 					<tr>
 						<th>제목</th>
 						<td>
-							<form:input class="form-control is-valid" type="text"
-								placeholder="제목을 입력하세요." path="btitle" readonly="true"
+							<form:input class="form-control" type="text"
+								path="btitle" readonly="true"
 								value="${bbsDTO.btitle }" />
 							<form:errors path="btitle" class="valid-feedback"></form:errors>
 						</td>
@@ -128,7 +128,7 @@
 					<tr>
 						<th>내용</th>
 						<td>
-							<form:textarea class="form-control is-valid"
+							<form:textarea class="form-control"
 								path="bcontent" rows="15" cols="30" placeholder="본문내용을 입력하세요."
 								readonly="true" value="${bbsDTO.bcontent }"></form:textarea>
 							<form:errors path="bcontent" class="valid-feedback"></form:errors>

@@ -18,7 +18,24 @@ public class LoginDAOImplJDBC implements LoginDAO {
 	@Inject //같은 타입의 인스턴스를 참조
 	private JdbcTemplate jdbcTemplate;
 	
-	//회원 유무체크
+	
+	//회원 존재 유무
+	@Override
+	public boolean isExist(String id) {
+		boolean isExist = false;
+		
+		StringBuffer sql = new StringBuffer();
+		sql.append("select count(id) from member where id=? ");
+		
+		int cnt = jdbcTemplate.queryForObject(
+				sql.toString(), new String[]{id}, Integer.class);
+		if(cnt > 0) {
+			isExist = true;
+		}
+		return isExist;
+	}
+	
+	//정상회원 체크
 	@Override
 	public boolean isMember(String id,String pw) {
 		boolean isMember = false;
@@ -73,5 +90,7 @@ public class LoginDAOImplJDBC implements LoginDAO {
 		
 		return mdto;
 	}
+
+
 
 }

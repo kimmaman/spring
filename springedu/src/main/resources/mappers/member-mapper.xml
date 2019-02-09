@@ -21,12 +21,12 @@
 		      where id=#{id} and pw=#{pw}
   </update>
   <!-- 회원 삭제(회원용) -->
-  <delete id="adminMemberDelete" parameterType="Map" >
+  <delete id="memberDelete" parameterType="Map" >
   		delete from member where id=#{id} and pw=#{pw}	
   </delete>
 
   <!-- 회원 수정(관리자용) -->
-  <delete id="adminMemberdelete" parameterType="String">
+  <delete id="adminMemberDelete" parameterType="String">
     delete from member where id=#{id}	
   </delete>
 

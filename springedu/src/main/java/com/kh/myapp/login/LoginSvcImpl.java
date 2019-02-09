@@ -12,7 +12,13 @@ public class LoginSvcImpl implements LoginSvc {
 	@Inject
 	LoginDAO loginDAO;
 	
-	//회원 유무체크
+	//회원 존재 유무 체크
+	@Override
+	public boolean isExist(String id) {
+		return loginDAO.isExist(id);
+	}
+	
+	//정상회원 체크
 	@Override
 	public boolean isMember(String id, String pw) {
 
@@ -35,5 +41,7 @@ public class LoginSvcImpl implements LoginSvc {
 	public MemberDTO findPw(String id, String tel, String birth) {
 		return loginDAO.findPw(id, tel, birth);
 	}
+
+
 
 }

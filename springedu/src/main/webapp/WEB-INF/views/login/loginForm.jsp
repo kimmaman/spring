@@ -2,8 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <jsp:include page="/main_header.jsp" flush="false"/>
-
-	<style>
+ <!-- Custom styles for this template -->
+    <link href="/resources/ccs/floating-labels.css" rel="stylesheet">
+		<style>
+			.errmsg {color: #f00;}
+			
 		.bd-placeholder-img {
 	    font-size: 1.125rem;
 	    text-anchor: middle;
@@ -40,11 +43,7 @@
 		  background: #e4e4e5;
     }
 	</style>
-    <!-- Custom styles for this template -->
-    <link href="/resources/ccs/floating-labels.css" rel="stylesheet">
-		<style>
-			.errmsg {color: #f00;}
-		</style> 
+	
           
 	<div class="container">
       <div class="row justify-content-center">
@@ -73,6 +72,10 @@
       <input type="checkbox" value="remember-me"> Remember me
     </label>
   </div>
+  <div class="form-label-group">
+  	<span class="errmsg">${errmsg }</span>
+  </div>
+
   <button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
   <div class="find">
   	<p>

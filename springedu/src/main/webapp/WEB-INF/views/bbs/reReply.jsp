@@ -233,11 +233,11 @@
 								  str += "    <div class='row m-0 p-0'>";
 								  str += "      <div class='col-2'></div>";
 								  str += "      <div class='col-8 pl-3'>";
-								  str += "        <a href='javascript:void(0)' class='goodBtn badge badge-pill badge-light' data-toggle='tooltip' data-placement='bottom'";
+								  str += "        <a href='javascript:void(0)' class='goodBtn badge badge-pill badge-light' ";
 								  str += "        data-html='true' title='<small>호감</small>'>";
 								  str += "          <i class='far fa-thumbs-up mr-2'>"+rec.rgood+"</i>";
 								  str += "        </a>";
-								  str += "        <a href='javascript:void(0)' class='badBtn badge badge-pill badge-light' data-toggle='tooltip' data-placement='bottom'";
+								  str += "        <a href='javascript:void(0)' class='badBtn badge badge-pill badge-light' ";
 								  str += "        data-html='true' title='<small>비호감</small>'>";
 								  str += "          <i class='far fa-thumbs-down mr-2'>"+rec.rbad+"</i>";
 								  str += "        </a>";
@@ -576,10 +576,17 @@
 					console.log("err"+err);
     	  }
       });
+			
+			
+
 		});
 		
-    //툴팁 적용
-    $('[data-toggle="tooltip"]').tooltip();
+	   if (${sessionScope.user.id == null}) {
+			   $('.badBtn, .goodBtn, .reReplyBtn').off('click');
+			   $('.badBtn, .goodBtn, .reReplyBtn').on('click',function(){
+				   alert('로그인이 필요합니다.')
+			   }) ;
+      }
     
 	}
 	

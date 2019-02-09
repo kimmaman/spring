@@ -53,10 +53,13 @@
 			<!-- 회원가입화면 배제 -->
 			<exclude-mapping path="/member/memberJoinForm"/>
 			<exclude-mapping path="/member/memberJoin"/>
+			<exclude-mapping path="/member/memberDelete"/>
 			<exclude-mapping path="/member/upload"/>
 			<!-- 게시글 목록화면 배제 -->
 			<exclude-mapping path="/bbs/list"/>
 			<exclude-mapping path="/bbs/view"/>
+			<exclude-mapping path="/rbbs/**/"/>
+			
 			<beans:bean id="loginCheckInterceptor" class="com.kh.myapp.interceptor.LoginCheckInterceptor"></beans:bean>			
 		</interceptor>
 		

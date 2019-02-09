@@ -4,7 +4,10 @@ import com.kh.myapp.member.dto.MemberDTO;
 
 
 public interface LoginSvc {
-	//회원유무 체크
+	//회원존재유무
+	public boolean isExist(String id);
+	
+	//정상회원유무 체크
 	public boolean isMember(String id, String pw);
 	
 	//로그인
