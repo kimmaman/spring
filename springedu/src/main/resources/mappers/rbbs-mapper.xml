@@ -6,7 +6,7 @@
 		insert into replyboard(rnum,bnum,rid,rnickname,rcontent,rgroup,rstep,rindent)
 		values(rboardnum_seq.nextval,#{bnum},#{rid},#{rnickname},#{rcontent},rboardnum_seq.currval,0,0)
 	</insert>
-	
+    
 	<!-- 댓글 목록 -->
 	<resultMap type="com.kh.myapp.bbs.dto.RbbsDTO" id="rbbsMap">
 		<result column="rnum" property="rnum"/>

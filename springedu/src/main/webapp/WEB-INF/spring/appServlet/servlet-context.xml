@@ -54,6 +54,7 @@
 			<exclude-mapping path="/member/memberJoinForm"/>
 			<exclude-mapping path="/member/memberJoin"/>
 			<exclude-mapping path="/member/memberDelete"/>
+			<exclude-mapping path="/member/googleLogin"/>
 			<exclude-mapping path="/member/upload"/>
 			<!-- 게시글 목록화면 배제 -->
 			<exclude-mapping path="/bbs/list"/>

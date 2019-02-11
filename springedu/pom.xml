@@ -328,7 +328,18 @@
 		    <version>1.4</version>
 		</dependency>
 
-
+		<!-- Google Login -->
+		<dependency>
+			<groupId>org.springframework.social</groupId>
+			<artifactId>spring-social-google</artifactId>
+			<version>1.0.0.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+		  <groupId>org.apache.httpcomponents</groupId>
+		  <artifactId>httpclient</artifactId>
+		  <version>4.5.3</version>
+		</dependency>
 				
 	</dependencies>
     <build>
@@ -368,6 +379,22 @@
                     <mainClass>org.test.int1.Main</mainClass>
                 </configuration>
             </plugin>
+            
+            <!-- 메이븐을 통한 톰캣서버 배포 시작 -->
+            <plugin>
+            	<groupId>org.apache.tomcat.maven</groupId>
+            	<artifactId>tomcat7-maven-plugin</artifactId>
+            	<version>2.2</version>
+            	<configuration>
+            		<path>/</path>
+            		<url>http://localhost:9080/manager/text</url>
+            		<username>admin</username>
+            		<password>admin1234</password>
+            		<update>true</update>
+            	</configuration>
+            </plugin>
+            <!-- 메이븐을 통한 톰캣서버 배포 끝 -->
+            
         </plugins>
     </build>
 </project>

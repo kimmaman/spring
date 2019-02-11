@@ -10,6 +10,7 @@
 		            values (#{id},#{pw},#{tel},#{nickName},#{gender},#{region},#{birth})
 
   </insert>
+  
   <!-- 회원 수정 -->
   <update id="memberUpdate" parameterType="MemberDTO">
     		update member set pw=#{pw},
@@ -20,6 +21,7 @@
                           birth=#{birth} 
 		      where id=#{id} and pw=#{pw}
   </update>
+  
   <!-- 회원 삭제(회원용) -->
   <delete id="memberDelete" parameterType="Map" >
   		delete from member where id=#{id} and pw=#{pw}	

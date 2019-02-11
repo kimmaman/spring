@@ -5,7 +5,7 @@
 <jsp:include page="/main_header.jsp" flush="false"/>    
 
 <style>
-	.errmsg, pwErr {color: #f00;}
+	.errmsg, .pwErr {color: #f00;}
 </style>            
 		
 <script>

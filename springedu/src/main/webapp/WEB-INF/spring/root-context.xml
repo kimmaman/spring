@@ -38,6 +38,18 @@
 		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
 	
+	<!-- Google 소셜 로그인 연결 설정 -->
+	<bean id="googleConnectionFactory" class="org.springframework.social.google.connect.GoogleConnectionFactory">
+		<constructor-arg value="126247722052-vba6646nj36u45659ilvn3clk36rc5ck.apps.googleusercontent.com"/>
+		<constructor-arg value="FqbzZSJiTnSVDSed-3iRQWrN"/>
+	</bean>
+	
+	<!-- 승인된 자바스크립트 원본과 승인된 redirection URI -->
+	<bean id="googleOAuth2Parameters" class="org.springframework.social.oauth2.OAuth2Parameters">
+		<property name="scope" value="https://www.googleapis.com/auth/plus.login"/>
+		<property name="redirectUri" value="http://localhost:8080/springedu/googleSignInCallback"></property>
+	</bean>
+	
 	<context:component-scan base-package="com.kh.myapp" >
 		<context:exclude-filter type="annotation" 
 											expression="org.springframework.stereotype.Controller"/>
